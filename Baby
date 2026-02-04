@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Apurva ❤️</title>
+
+<style>
+body{
+margin:0;height:100vh;display:flex;justify-content:center;align-items:center;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);overflow:hidden;font-family:Segoe UI;
+}
+
+.screen{
+position:absolute;width:100%;height:100%;display:flex;
+flex-direction:column;justify-content:center;align-items:center;
+text-align:center;
+}
+
+.bigheart{font-size:120px;animation:pulse 1s infinite;color:white;}
+@keyframes pulse{0%{scale:1}50%{scale:1.2}100%{scale:1}}
+
+.proposal{
+color:black;
+font-size:28px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.btns button{
+padding:10px 25px;border:none;border-radius:20px;margin:10px;font-size:16px;
+}
+.yes{background:#00c853;color:white}
+.no{background:#ff1744;color:white}
+
+.card{
+display:none;background:white;padding:25px;border-radius:25px;width:90%;
+max-width:360px;text-align:center;color:#ff4d79;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+img{
+width:150px;height:150px;border-radius:50%;border:4px solid #ff4d79;
+object-fit:cover;box-shadow:0 0 20px #ff4d79;
+}
+
+.float{
+position:absolute;bottom:-20px;font-size:24px;
+animation:float 6s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-900px);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="apurva.mp3">
+</audio>
+
+<div class="screen" id="step1">
+<div class="bigheart">❤️</div>
+<h1 style="color:white;">I LOVE YOU APURVA</h1>
+<p style="color:white;">Tap Anywhere</p>
+</div>
+
+<div class="screen" id="step2" style="display:none;">
+<div class="proposal">WILL YOU MARRY ME 💍</div>
+
+<div class="btns" id="buttons">
+<button class="yes" onclick="yes()">YES</button>
+<button class="no" onclick="no()">NO</button>
+</div>
+<p id="noMsg" style="color:black;"></p>
+</div>
+
+<div class="card" id="final">
+<img src="apurva.jpg">
+<h3>Apurva ❤️</h3>
+<div id="msg"></div>
+</div>
+
+<script>
+let text=`Sorry… main aapko preshan nahi karna chahta tha 😔
+
+bas bahut yaad aa rahi thi…
+main aapke bina reh nahi sakta yaar 💔
+dil har waqt aapko hi yaad karta hai ❤️`;
+
+let i=0;
+
+document.body.onclick=()=>{
+document.getElementById("music").play();
+document.getElementById("step1").style.display="none";
+document.getElementById("step2").style.display="flex";
+}
+
+function yes(){
+document.querySelector(".proposal").style.display="none"; // hides marry text
+document.getElementById("buttons").style.display="none";
+document.getElementById("step2").style.display="none";
+document.getElementById("final").style.display="block";
+type();
+}
+
+function no(){
+document.getElementById("noMsg").innerHTML="Please baby… ek baar YES kar do 😔❤️";
+}
+
+function type(){
+if(i<text.length){
+ document.getElementById("msg").innerHTML+=text.charAt(i);
+ i++;
+ setTimeout(type,60);
+}
+}
+
+const emojis=["❤️","😘","🤗"];
+setInterval(()=>{
+ let e=document.createElement("div");
+ e.className="float";
+ e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+ e.style.left=Math.random()*100+"vw";
+ document.body.appendChild(e);
+ setTimeout(()=>{e.remove()},6000);
+},200);
+</script>
